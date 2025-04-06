@@ -5,6 +5,7 @@ const nextConfig = {
       "10.0.60.166",
       "10.0.60.166",
       "res.cloudinary.com",
+      "i.pravatar.cc",
     ], // Add the domains you need
   },
 
