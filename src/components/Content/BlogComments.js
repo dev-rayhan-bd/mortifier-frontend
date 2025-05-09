@@ -8,6 +8,7 @@ import {
   useDoCommentMutation,
   useGetAllCommentsQuery,
 } from "@/redux/features/content/contentApi";
+import Avatar from "antd/es/avatar/avatar";
 
 const BlogComments = ({ id }) => {
   const [comments, setComments] = useState("");
@@ -55,17 +56,25 @@ const BlogComments = ({ id }) => {
             className="bg-white p-4 rounded-lg shadow-md mb-4 border border-gray-200"
           >
             <div className="flex items-center gap-4">
-              <Image
+              <Avatar
+                src={
+                  item?.user_image
+                    ? `https://api.morfitter.com${item?.user_image}`
+                    : defaultProfilePic
+                }
+                size={45}
+              />
+              {/* <Image
                 className="rounded-full border border-gray-300"
                 src={
                   item?.user_image
-                    ? `${item?.user_image}`
+                    ? `https://api.morfitter.com${item?.user_image}`
                     : defaultProfilePic
                 }
                 height={50}
                 width={50}
                 alt="profile"
-              />
+              /> */}
               <div>
                 <p className="text-lg font-semibold text-gray-900 capitalize">
                   {item?.user_name}

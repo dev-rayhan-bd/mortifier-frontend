@@ -29,7 +29,7 @@ const MakePayment = ({ session }) => {
                             className="w-full rounded-lg transition-transform duration-300 hover:scale-105"
                         >
                             <source
-                                src={`${session?.promo_video}`}
+                                src={`https://api.morfitter.com${session?.promo_video}`}
                                 type="video/mp4"
                             />
                             Your browser does not support the video tag.

@@ -69,7 +69,7 @@ const SingleSession = () => {
                         key={videoTutorials[currentVideoIndex]?.url}
                         controls
                         className="w-full rounded-md shadow-lg mb-4"
-                        src={videoTutorials[currentVideoIndex]?.url}
+                        src={`${videoTutorials[currentVideoIndex]?.url}`}
                     />
                     <h2 className="text-2xl font-bold mb-2">{videoTutorials[currentVideoIndex]?.title}</h2>
                     <p className="text-gray-600 mb-4">{videoTutorials[currentVideoIndex]?.description || "No description available."}</p>
@@ -105,7 +105,7 @@ const SingleSession = () => {
                         <div className="flex items-center space-x-4">
                             <Image
                                 src={user?.additionalInfo?.profileImageUrl
-                                    ? `${user?.additionalInfo?.profileImageUrl}`
+                                    ? `https://api.morfitter.com${user?.additionalInfo?.profileImageUrl}`
                                     : profileImage}
                                 alt="Profile"
                                 width={300}

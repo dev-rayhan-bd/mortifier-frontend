@@ -162,7 +162,7 @@ const ViewUserProfile = () => {
                                         <div key={item?._id} className=" flex items-center gap-3 shadow-lg px-3 py-2 rounded-lg">
                                             <Image className=" w-14 rounded-2xl "
                                                 src={item?.followingDetails?.profileImageUrl
-                                                    ? `${item?.followingDetails?.profileImageUrl}`
+                                                    ? `https://api.morfitter.com${item?.followingDetails?.profileImageUrl}`
                                                     : defaultProfileImage
                                                 }
                                                 height={200} width={200} alt="profile" />

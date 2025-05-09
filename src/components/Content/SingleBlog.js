@@ -73,7 +73,7 @@ const SingleBlog = ({ content }) => {
             size={20}
             src={
               item?.profileImageUrl
-                ? `${item?.profileImageUrl}`
+                ? `https://api.morfitter.com${item?.profileImageUrl}`
                 : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
             }
           />
@@ -98,7 +98,7 @@ const SingleBlog = ({ content }) => {
               <Image
                 src={
                   content?.userInfo?.profileImageUrl
-                    ? `${content?.userInfo?.profileImageUrl}`
+                    ? `https://api.morfitter.com${content?.userInfo?.profileImageUrl}`
                     : profileImage
                 }
                 width={200}
@@ -140,7 +140,7 @@ const SingleBlog = ({ content }) => {
             <div className="rounded-2xl w-full overflow-hidden">
               {content?.imageUrl && (
                 <Image
-                  src={`${content?.imageUrl}`}
+                  src={`https://api.morfitter.com${content?.imageUrl}`}
                   alt="Post Content"
                   width={500}
                   height={500}
@@ -151,7 +151,7 @@ const SingleBlog = ({ content }) => {
               {content?.videoUrl && (
                 <video controls className="w-full rounded-lg ">
                   <source
-                    src={`${content?.videoUrl}`}
+                    src={`https://api.morfitter.com${content?.videoUrl}`}
                     type="video/mp4"
                   />
                   Your browser does not support the video tag.

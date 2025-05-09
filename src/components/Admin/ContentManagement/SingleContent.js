@@ -27,7 +27,7 @@ function SingleContent({ item }) {
         <Image
           src={
             item?.imageUrl
-              ? `${item?.imageUrl}`
+              ? `https://api.morfitter.com${item?.imageUrl}`
               : profileImage
           }
           alt={item?.title}
@@ -40,7 +40,7 @@ function SingleContent({ item }) {
       {item?.videoUrl && (
         <video controls className="w-full rounded-lg ">
           <source
-            src={`${item?.videoUrl}`}
+            src={`https://api.morfitter.com${item?.videoUrl}`}
             type="video/mp4"
           />
           Your browser does not support the video tag.

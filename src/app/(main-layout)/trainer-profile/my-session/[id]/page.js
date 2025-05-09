@@ -10,7 +10,7 @@ import profileImage from "../../../../../assets/profile/profile_image.webp";
 import { CiEdit } from "react-icons/ci";
 import EditSessionModal from "@/components/TrainerProfile/EditSessionModal";
 
-const BASE_URL = "";
+const BASE_URL = "https://api.morfitter.com";
 
 const SingleSession = () => {
     const { id } = useParams();
@@ -154,17 +154,17 @@ const SingleSession = () => {
                         Enrolled Users
                     </h1>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-3">
                         {allEntrolledUser?.data?.map((user) => (
                             <div
                                 key={user?._id}
-                                className="bg-white shadow-lg rounded-lg py-5 px-3 "
+                                className="bg-white shadow-lg flex items-center rounded-lg py-4 px-3 "
                             >
 
                                 <div className="flex items-center space-x-4">
                                     <Image
                                         src={user?.additionalInfo?.profileImageUrl
-                                            ? `${user?.additionalInfo?.profileImageUrl}`
+                                            ? `https://api.morfitter.com${user?.additionalInfo?.profileImageUrl}`
                                             : profileImage}
                                         alt="Profile"
                                         width={300}

@@ -94,7 +94,7 @@ function TestimonialsModal({ setTestimonialsVisible }) {
                 <Image
                   src={
                     user?.profileImageUrl
-                      ? `${user?.profileImageUrl}`
+                      ? `https://api.morfitter.com${user?.profileImageUrl}`
                       : defaultProfilePic
                   }
                   width={100}

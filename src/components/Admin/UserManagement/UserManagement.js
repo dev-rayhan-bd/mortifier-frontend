@@ -38,7 +38,7 @@ const AllUsers = ({ searchQuery }) => {
         record?.profileImageUrl ? (
           <Avatar
             size={40}
-            src={`${record?.profileImageUrl}`}
+            src={`https://api.morfitter.com${record?.profileImageUrl}`}
           />
         ) : (
           <Avatar size={40} src="https://avatar.iran.liara.run/public/43" />

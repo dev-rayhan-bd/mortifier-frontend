@@ -49,7 +49,7 @@ const SingleModalItem = ({ item, handleInvitationOk }) => {
             className=" w-14 rounded-2xl object-cover "
             src={
               item?.traineeData?.profileImageUrl
-                ? `${item?.trainerData?.profileImageUrl}`
+                ? `https://api.morfitter.com${item?.trainerData?.profileImageUrl}`
                 : defaultProfilePic
             }
             height={200}

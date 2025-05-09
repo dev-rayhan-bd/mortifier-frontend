@@ -9,6 +9,7 @@ const AddSessionContentModal = ({
   isModalOpen,
   id,
 }) => {
+  const [form] = Form.useForm();
   const [Video1, setVideo1] = useState(null);
   const [addSession, { isLoading }] = useAddSessionMutation();
 
@@ -26,6 +27,8 @@ const AddSessionContentModal = ({
       .unwrap()
       .then(() => {
         message.success(`Session Created Successfully`);
+        form.resetFields();
+        setVideo1(null)
         handleOk();
       })
       .catch((error) => {
@@ -42,7 +45,7 @@ const AddSessionContentModal = ({
       onOk={handleOk}
       onCancel={handleCancel}
     >
-      <Form layout="vertical" className=" pt-10" onFinish={onFinish}>
+      <Form layout="vertical" form={form} className=" pt-10" onFinish={onFinish}>
         <Form.Item
           name="title"
           className=""
@@ -90,7 +93,7 @@ const AddSessionContentModal = ({
             htmlType="submit"
           >
             Submit
-          </button> { isLoading && <Spin size="large"></Spin>}
+          </button> {isLoading && <Spin size="large"></Spin>}
         </Form.Item>
       </Form>
     </Modal>

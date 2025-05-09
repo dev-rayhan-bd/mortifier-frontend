@@ -104,12 +104,12 @@ const SingleSessionOfPt = () => {
                         key={videoTutorials[currentVideoIndex]?.url}
                         controls
                         className="w-full rounded-md shadow-lg mb-4"
-                        src={videoTutorials[currentVideoIndex]?.url}
+                        src={`https://api.morfitter.com${videoTutorials[currentVideoIndex]?.url}`}
                     />
                     <div className='flex justify-between items-center mb-4'>
                         <div>
-                            <h2 className="text-xl md:text-2xl font-bold mb-2">{videoTutorials[currentVideoIndex]?.title}</h2>
-                            <p className="text-gray-600 mb-4">{videoTutorials[currentVideoIndex]?.description || "No description available."}</p>
+                            <h2 className="text-xl md:text-2xl font-bold mb-4">{videoTutorials[currentVideoIndex]?.title}</h2>
+                            {/* <p className="text-gray-600 mb-4">{videoTutorials[currentVideoIndex]?.description || "No description available."}</p> */}
                         </div>
                         {
                             videoTutorials[currentVideoIndex]?.completed ?

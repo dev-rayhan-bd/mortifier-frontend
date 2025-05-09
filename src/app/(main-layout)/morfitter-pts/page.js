@@ -60,7 +60,7 @@ const MorfitterPts = () => {
                         <div className="w-full md:w-[50%] xl:w-[40%] 2xl:w-[20%]">
                             <Image
                                 className="w-32 h-32 rounded-full object-cover border-[6px] border-primary"
-                                src={item?.profileImageUrl ? item.profileImageUrl : profileImage}
+                                src={`https://api.morfitter.com${item?.profileImageUrl ? item.profileImageUrl : profileImage}`}
                                 width={300}
                                 height={300}
                                 alt="profile-trainer-image"

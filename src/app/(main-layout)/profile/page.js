@@ -95,7 +95,7 @@ const Profile = () => {
             <Link className=" bg-white text-black hover:text-black px-1 rounded " href={`/setting/change-user-password`}>Change Password</Link>
         </div>;
 
-    const profilePicUrl = profilePic ? URL.createObjectURL(profilePic) : `${user?.profileImageUrl}`;
+    const profilePicUrl = profilePic ? URL.createObjectURL(profilePic) : `https://api.morfitter.com${user?.profileImageUrl}`;
 
     // chats
     const [open, setOpen] = useState(false);
@@ -291,7 +291,7 @@ const Profile = () => {
                                             <Image className=" w-14 h-14 rounded-2xl object-cover "
 
                                                 src={item?.followingDetails?.profileImageUrl
-                                                    ? `${item?.followingDetails?.profileImageUrl}`
+                                                    ? `https://api.morfitter.com${item?.followingDetails?.profileImageUrl}`
                                                     : defaultProfilePic
                                                 }
                                                 height={200} width={200} alt="profile" />
