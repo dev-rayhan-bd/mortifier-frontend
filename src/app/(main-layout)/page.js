@@ -7,6 +7,8 @@ import PersonalTrainers from '@/components/MainLayout/Home/PersonalTrainers';
 import WhyJoinMorfitter from '@/components/MainLayout/Home/WhyJoinMorfitter';
 import React from 'react';
 
+
+
 const Home = () => {
     return (
         <div>

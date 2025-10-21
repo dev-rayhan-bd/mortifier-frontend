@@ -12,12 +12,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html>
+      <head>
+        {/* Add Google AdSense script here */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6839068546133512"
+          crossorigin="anonymous"
+        ></script>
+      </head>
       <ConfigProvider theme={mainTheme}>
-          <body>
-        <ReduxProviders>
-            {children}
-        </ReduxProviders>
-          </body>
+        <body>
+          <ReduxProviders>{children}</ReduxProviders>
+        </body>
       </ConfigProvider>
     </html>
   );
