@@ -40,7 +40,7 @@ const Header = () => {
     <nav className=" sticky top-0 bg-white z-50 shadow-lg">
       <div className="xxl:w-[1340px] mx-auto px-6 py-5 flex justify-between items-center">
         <Link href={`/`}>
-          <Image src={logo} alt="logo" height={0} width={0} className=" w-32" />
+          <Image src={logo} alt="Home" height={0} width={0} className=" w-32" />
         </Link>
 
         {/* Desktop Menu */}
@@ -48,18 +48,20 @@ const Header = () => {
           <ul className="flex items-center space-x-5">
             <Link href="/">
               <span
-                className={`${isActive("/") ? " rounded-full  bg-primary  text-white" : ""
-                  }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary hover:text-white`}
+                className={`${
+                  isActive("/") ? " rounded-full  bg-primary  text-white" : ""
+                }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary hover:text-white`}
               >
                 Home
               </span>
             </Link>
             <Link href="/content">
               <span
-                className={`${isActive("/content")
-                  ? " rounded-full  bg-primary  text-white"
-                  : ""
-                  }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
+                className={`${
+                  isActive("/content")
+                    ? " rounded-full  bg-primary  text-white"
+                    : ""
+                }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
               >
                 Content
               </span>
@@ -76,30 +78,33 @@ const Header = () => {
                         </Link>  */}
             <Link href="/find-trainers">
               <span
-                className={`${isActive("/find-trainers")
-                  ? " rounded-full  bg-primary  text-white"
-                  : ""
-                  }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
+                className={`${
+                  isActive("/find-trainers")
+                    ? " rounded-full  bg-primary  text-white"
+                    : ""
+                }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
               >
                 Get MORfitter
               </span>
             </Link>
             <Link href="/morfitter-pts">
               <span
-                className={`${isActive("/morfitter-pts")
-                  ? " rounded-full  bg-primary  text-white"
-                  : ""
-                  }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
+                className={`${
+                  isActive("/morfitter-pts")
+                    ? " rounded-full  bg-primary  text-white"
+                    : ""
+                }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
               >
                 MORfitter Trainer
               </span>
             </Link>
             <Link href="/morfitter-sessions">
               <span
-                className={`${isActive("/morfitter-sessions")
-                  ? " rounded-full  bg-primary  text-white"
-                  : ""
-                  }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
+                className={`${
+                  isActive("/morfitter-sessions")
+                    ? " rounded-full  bg-primary  text-white"
+                    : ""
+                }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
               >
                 MORfitter Sessions
               </span>
@@ -107,10 +112,11 @@ const Header = () => {
             {role?.role === "trainer" && (
               <Link href="/trainer-profile">
                 <span
-                  className={`${isActive("/trainer-profile")
-                    ? " rounded-full  bg-primary text-white"
-                    : ""
-                    }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
+                  className={`${
+                    isActive("/trainer-profile")
+                      ? " rounded-full  bg-primary text-white"
+                      : ""
+                  }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
                 >
                   PT Profile
                 </span>
@@ -120,10 +126,11 @@ const Header = () => {
             {role?.role === "trainee" && (
               <Link href="/profile">
                 <span
-                  className={`${isActive("/profile")
-                    ? " rounded-full  bg-primary text-white"
-                    : ""
-                    }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
+                  className={`${
+                    isActive("/profile")
+                      ? " rounded-full  bg-primary text-white"
+                      : ""
+                  }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
                 >
                   Profile
                 </span>
@@ -140,8 +147,6 @@ const Header = () => {
                   </span>
                 </Link>
               ))}
-
-
 
             {/* <Link href="/blog">
                             <span
@@ -161,8 +166,7 @@ const Header = () => {
           </button>
         </Link> */}
         <div className=" hidden xl:flex items-center">
-          {
-            role?.role &&
+          {role?.role && (
             <div className=" mr-3 flex items-center gap-2">
               <Avatar
                 src={
@@ -170,12 +174,15 @@ const Header = () => {
                     ? `https://api.morfitter.com${user?.profileImageUrl}`
                     : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                 }
-                size={50} className=" " alt="circle" />
+                size={50}
+                className=" "
+                alt="circle"
+              />
               <div>
                 <p>{user?.userName}</p>
               </div>
             </div>
-          }
+          )}
           {role?.role === "trainee" && (
             <span
               onClick={handleLogOut}
@@ -197,12 +204,13 @@ const Header = () => {
           {!role && (
             <Link href="/auth/login">
               <span
-                className={`${isActive("/auth/login")
-                  ? " rounded-full  bg-primary text-white"
-                  : ""
-                  }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
+                className={`${
+                  isActive("/auth/login")
+                    ? " rounded-full  bg-primary text-white"
+                    : ""
+                }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
               >
-                log In
+                Login
               </span>
             </Link>
           )}
@@ -210,10 +218,11 @@ const Header = () => {
           {!role && (
             <Link className=" ml-3" href="/auth/user-register">
               <span
-                className={`${isActive("/auth/user-register")
-                  ? " rounded-full  bg-primary text-white"
-                  : ""
-                  }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
+                className={`${
+                  isActive("/auth/user-register")
+                    ? " rounded-full  bg-primary text-white"
+                    : ""
+                }  text-lg rounded-full font-light py-2 px-4 hover:bg-primary  hover:text-white`}
               >
                 Register
               </span>

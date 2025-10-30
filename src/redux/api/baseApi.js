@@ -61,7 +61,7 @@ const baseQueryWithRefreshToken = async (args, api, extraOptions) => {
         }
       } catch (error) {
         console.error("Token refresh failed:", error);
-        message.error("Session expired. Please log in again.");
+        message.error("Session expired. Please login again.");
         api.dispatch(logout());
         Cookies.remove("morfitter-token");
         window.location.href = "/auth/login";

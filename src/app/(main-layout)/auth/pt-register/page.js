@@ -93,7 +93,9 @@ const PTRegister = () => {
               >
                 <Select
                   placeholder="Title"
-                  suffixIcon={<IoMdArrowDropdown className="w-6 h-6 text-greenColor" />}
+                  suffixIcon={
+                    <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
+                  }
                   className="w-[150px]"
                 >
                   <Select.Option value="Mr">Mr</Select.Option>
@@ -103,7 +105,6 @@ const PTRegister = () => {
                   <Select.Option value="Dr">Dr</Select.Option>
                 </Select>
               </Form.Item>
-
 
               <div className="relative mb-8 md:-mt-6">
                 <Image
@@ -160,17 +161,10 @@ const PTRegister = () => {
                 ]}
                 className=" w-full"
               >
-                <Input
-                  placeholder="Email"
-                  className="w-full"
-                />
+                <Input placeholder="Email" className="w-full" />
               </Form.Item>
 
-              <Form.Item
-                name="mobile"
-                className=""
-
-              >
+              <Form.Item name="mobile" className="">
                 <Input
                   placeholder="Mobile Number"
                   prefix={<PhoneOutlined />}
@@ -184,12 +178,16 @@ const PTRegister = () => {
               <div className="grid grid-cols-3 gap-4">
                 <Form.Item
                   name="day"
-                  rules={[
-                    { required: true, message: "Please enter the day!" },
-
-                  ]}
+                  rules={[{ required: true, message: "Please enter the day!" }]}
                 >
-                  <Select showSearch placeholder="Day" suffixIcon={<IoMdArrowDropdown className="w-6 h-6 text-greenColor" />} className="w-full">
+                  <Select
+                    showSearch
+                    placeholder="Day"
+                    suffixIcon={
+                      <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
+                    }
+                    className="w-full"
+                  >
                     {Array.from({ length: 31 }, (_, i) => (
                       <Select.Option key={i + 1} value={i + 1}>
                         {i + 1}
@@ -202,10 +200,16 @@ const PTRegister = () => {
                   name="month"
                   rules={[
                     { required: true, message: "Please enter the month!" },
-
                   ]}
                 >
-                  <Select showSearch placeholder="Month" suffixIcon={<IoMdArrowDropdown className="w-6 h-6 text-greenColor" />} className="w-full">
+                  <Select
+                    showSearch
+                    placeholder="Month"
+                    suffixIcon={
+                      <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
+                    }
+                    className="w-full"
+                  >
                     {Array.from({ length: 12 }, (_, i) => (
                       <Select.Option key={i + 1} value={i + 1}>
                         {i + 1}
@@ -220,7 +224,14 @@ const PTRegister = () => {
                     { required: true, message: "Please enter the year!" },
                   ]}
                 >
-                  <Select showSearch placeholder="Year" suffixIcon={<IoMdArrowDropdown className="w-6 h-6 text-greenColor" />} className="w-full">
+                  <Select
+                    showSearch
+                    placeholder="Year"
+                    suffixIcon={
+                      <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
+                    }
+                    className="w-full"
+                  >
                     {Array.from(
                       { length: new Date().getFullYear() - 1925 + 1 },
                       (_, i) => {
@@ -237,7 +248,6 @@ const PTRegister = () => {
               </div>
 
               {/* Mobile Number */}
-
             </div>
             {/* Username & Password */}
             <div className="grid grid-cols-2 gap-4 ">
@@ -254,7 +264,10 @@ const PTRegister = () => {
                 name="password"
                 rules={[
                   { required: true, message: "Please input your password!" },
-                  { min: 8, message: "Password must be at least 8 characters!" },
+                  {
+                    min: 8,
+                    message: "Password must be at least 8 characters!",
+                  },
                 ]}
                 hasFeedback
               >
@@ -292,7 +305,7 @@ const PTRegister = () => {
           <p className=" mt-6">
             Already have an account?{" "}
             <Link className=" text-primary font-semibold" href={`/auth/login`}>
-              Log In
+              Login
             </Link>
           </p>
         </div>

@@ -22,23 +22,24 @@ const LogIn = () => {
       email: values?.email,
       password: values?.password,
     };
-    console.log("log in data", LogInData);
+    // console.log("Login data", LogInData);
 
     logIn(LogInData)
       .unwrap()
       .then((data) => {
-        console.log("log in data", data);
+        console.log("Login data", data);
 
         const verifiedToken = decodedToken(data?.data?.accessToken);
-        Cookies.set('morfitter-token', data?.data?.accessToken)
+        Cookies.set("morfitter-token", data?.data?.accessToken);
         dispatch(setRole(verifiedToken));
         dispatch(setToken(data?.data?.accessToken));
         notification.success({
-          message: "log in Successful",
+          message: "Login Successful",
           description: data?.data?.message,
           placement: "topRight",
         });
-        const redirectTo = verifiedToken?.role === "trainee" ? "/profile" : "/trainer-profile";
+        const redirectTo =
+          verifiedToken?.role === "trainee" ? "/profile" : "/trainer-profile";
         router.push(redirectTo);
 
         // **Force a full page reload to re-run middleware**
@@ -47,11 +48,10 @@ const LogIn = () => {
         }, 500);
       })
       .catch((error) => {
-        console.log('error', error);
+        console.log("error", error);
         notification.error({
           message: "Error",
-          description:
-            error?.data?.message,
+          description: error?.data?.message,
           placement: "topRight",
         });
       });
@@ -73,7 +73,7 @@ const LogIn = () => {
 
         {/* Form Section */}
         <div className="lg:w-1/2 flex flex-col justify-center md:p-5 rounded-lg ">
-          <h1 className="text-2xl md:text-5xl font-bold mb-5">Log In</h1>
+          <h1 className="text-2xl md:text-5xl font-bold mb-5">Login</h1>
 
           <Form
             name="register"
@@ -134,8 +134,9 @@ const LogIn = () => {
                 disabled={isLoading}
                 className="bookBtn text-lg font-medium leading-8 text-white bg-secondary hover:bg-greenColor py-2 md:py-1 px-6 md:px-8 rounded-full capitalize transition-all hover:"
               >
-                Log In
-              </button> {isLoading && <Spin className=" mr-1"></Spin>}
+                Login
+              </button>{" "}
+              {isLoading && <Spin className=" mr-1"></Spin>}
             </Form.Item>
           </Form>
           <p className=" mt-6">

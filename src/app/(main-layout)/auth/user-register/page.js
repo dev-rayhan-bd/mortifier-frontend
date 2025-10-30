@@ -153,9 +153,9 @@ const UserRegister = () => {
               <div className=" w-full">
                 <Form.Item
                   name="gymMember"
-                // rules={[
-                //   { required: true, message: "Please input your gym member!" },
-                // ]}
+                  // rules={[
+                  //   { required: true, message: "Please input your gym member!" },
+                  // ]}
                 >
                   <Input placeholder="Member of a gym" className="md:w-[70%]" />
                 </Form.Item>
@@ -168,7 +168,9 @@ const UserRegister = () => {
                 >
                   <Select
                     placeholder="Title"
-                    suffixIcon={<IoMdArrowDropdown className="w-6 h-6 text-greenColor" />}
+                    suffixIcon={
+                      <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
+                    }
                     className="w-[150px]"
                   >
                     <Select.Option value="Mr">Mr</Select.Option>
@@ -234,12 +236,16 @@ const UserRegister = () => {
               <div className="md:w-1/2 grid grid-cols-3 gap-4">
                 <Form.Item
                   name="day"
-                  rules={[
-                    { required: true, message: "Please enter the day!" },
-
-                  ]}
+                  rules={[{ required: true, message: "Please enter the day!" }]}
                 >
-                  <Select showSearch placeholder="Day" suffixIcon={<IoMdArrowDropdown className="w-6 h-6 text-greenColor" />} className="w-full">
+                  <Select
+                    showSearch
+                    placeholder="Day"
+                    suffixIcon={
+                      <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
+                    }
+                    className="w-full"
+                  >
                     {Array.from({ length: 31 }, (_, i) => (
                       <Select.Option key={i + 1} value={i + 1}>
                         {i + 1}
@@ -254,7 +260,14 @@ const UserRegister = () => {
                     { required: true, message: "Please enter the month!" },
                   ]}
                 >
-                  <Select showSearch placeholder="Month" suffixIcon={<IoMdArrowDropdown className="w-6 h-6 text-greenColor" />} className="w-full">
+                  <Select
+                    showSearch
+                    placeholder="Month"
+                    suffixIcon={
+                      <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
+                    }
+                    className="w-full"
+                  >
                     {Array.from({ length: 12 }, (_, i) => (
                       <Select.Option key={i + 1} value={i + 1}>
                         {i + 1}
@@ -269,7 +282,14 @@ const UserRegister = () => {
                     { required: true, message: "Please enter the year!" },
                   ]}
                 >
-                  <Select showSearch placeholder="Year" suffixIcon={<IoMdArrowDropdown className="w-6 h-6 text-greenColor" />} className="w-full">
+                  <Select
+                    showSearch
+                    placeholder="Year"
+                    suffixIcon={
+                      <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
+                    }
+                    className="w-full"
+                  >
                     {Array.from(
                       { length: new Date().getFullYear() - 1925 + 1 },
                       (_, i) => {
@@ -285,17 +305,16 @@ const UserRegister = () => {
                 </Form.Item>
               </div>
 
-
               {/* Mobile Number */}
               <Form.Item
                 name="mobile"
                 className=" md:w-1/2"
-              // rules={[
-              //   {
-              //     required: true,
-              //     message: "Please input your mobile number!",
-              //   },
-              // ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Please input your mobile number!",
+                //   },
+                // ]}
               >
                 <Input
                   placeholder="Mobile Number"
@@ -306,7 +325,6 @@ const UserRegister = () => {
             </div>
             {/* Username & Password */}
             <div className="grid grid-cols-2 gap-4 ">
-
               <Form.Item
                 name="userName"
                 rules={[
@@ -320,7 +338,10 @@ const UserRegister = () => {
                 name="password"
                 rules={[
                   { required: true, message: "Please input your password!" },
-                  { min: 8, message: "Password must be at least 8 characters!" },
+                  {
+                    min: 8,
+                    message: "Password must be at least 8 characters!",
+                  },
                 ]}
                 hasFeedback
               >
@@ -331,11 +352,18 @@ const UserRegister = () => {
             <div className="grid grid-cols-2 gap-4 ">
               <Form.Item
                 name="country"
-              // rules={[
-              //   { required: true, message: "Please input your country!" },
-              // ]}
+                // rules={[
+                //   { required: true, message: "Please input your country!" },
+                // ]}
               >
-                <Select defaultValue="United Kingdom" placeholder="Country" suffixIcon={<IoMdArrowDropdown className="w-6 h-6 text-greenColor" />} className="w-full">
+                <Select
+                  defaultValue="United Kingdom"
+                  placeholder="Country"
+                  suffixIcon={
+                    <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
+                  }
+                  className="w-full"
+                >
                   {countries.map((country) => (
                     <Select.Option key={country} value={country}>
                       {country}
@@ -354,17 +382,14 @@ const UserRegister = () => {
             </div>
             <Form.Item
               name="email"
-              rules={[
-                { required: true, message: "Please input your email!" },
-              ]}
+              rules={[{ required: true, message: "Please input your email!" }]}
               className=" w-full"
             >
               <Input
                 placeholder="Email"
-              // suffix={
-              //   <IoMdArrowDropdown className=" w-6 h-6 text-greenColor" />
-              // }
-
+                // suffix={
+                //   <IoMdArrowDropdown className=" w-6 h-6 text-greenColor" />
+                // }
               />
             </Form.Item>
             {/* Terms Checkbox */}
@@ -397,7 +422,7 @@ const UserRegister = () => {
           <p className=" mt-6">
             Already have an account?{" "}
             <Link className=" text-primary font-semibold" href={`/auth/login`}>
-              Log In
+              Login
             </Link>
           </p>
           <p className=" mt-6">

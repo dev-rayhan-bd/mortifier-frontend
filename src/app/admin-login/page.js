@@ -20,19 +20,19 @@ const AdminLogIn = () => {
       email: values?.email,
       password: values?.password,
     };
-    console.log("log in data", LogInData);
+    // console.log("Login data", LogInData);
 
     logIn(LogInData)
       .unwrap()
       .then((data) => {
-        console.log("log in data", data);
+        // console.log("Login data", data);
 
         const verifiedToken = decodedToken(data?.data?.accessToken);
         Cookies.set("morfitter-token", data?.data?.accessToken);
         dispatch(setRole(verifiedToken));
         dispatch(setToken(data?.data?.accessToken));
         notification.success({
-          message: "log in Successful",
+          message: "Login Successful",
           description: data?.data?.message,
           placement: "topRight",
         });
@@ -54,7 +54,7 @@ const AdminLogIn = () => {
         {/* Form Section */}
         <div className="flex flex-col justify-center md:p-5 rounded-lg w-full">
           <h1 className="text-2xl md:text-5xl font-bold mb-8 text-center">
-            Admin Log In
+            Admin Login
           </h1>
 
           <Form
@@ -120,7 +120,7 @@ const AdminLogIn = () => {
                 disabled={isLoading}
                 className="bookBtn text-lg font-medium text-white bg-secondary hover:bg-greenColor py-2 px-8 rounded-full capitalize transition-all"
               >
-                Log In {isLoading && <Spin />}
+                Login {isLoading && <Spin />}
               </button>
             </Form.Item>
           </Form>

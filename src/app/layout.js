@@ -1,8 +1,7 @@
-import { ConfigProvider } from "antd";
-import "./globals.css";
 import { mainTheme } from "@/theme/ant-theme";
 import ReduxProviders from "@/utils/ReduxProviders";
-
+import { ConfigProvider } from "antd";
+import "./globals.css";
 
 export const metadata = {
   title: "Morfitter - Fit Your Life, Fit Your Schedule",
@@ -17,7 +16,7 @@ export default function RootLayout({ children }) {
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6839068546133512"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></script>
       </head>
       <ConfigProvider theme={mainTheme}>
