@@ -27,14 +27,6 @@ const profileApi = baseApi.injectEndpoints({
                 method: "GET",
             }),
         }),
-
-        // getMe: builder.query({
-        //   query: () => ({
-        //     url: "/users/get-me",
-        //     method: "GET",
-        //   }),
-        // }),
-
     }),
 });
 

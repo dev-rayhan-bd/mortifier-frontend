@@ -27,7 +27,7 @@ const PTRegister2 = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [createTrainer, { isLoading }] = useCreateTrainerMutation();
-
+  const [error, setError] = useState(null);
   const [selectedLogos, setSelectedLogos] = useState([]);
   const { info, profile } = useSelector((state) => state.register);
 
@@ -94,34 +94,24 @@ const PTRegister2 = () => {
     // Clean `trainerData`
     data.register.trainerData = cleanObject(data.register.trainerData);
 
-    // if (!onlineSession) {
-    //   notification.error({
-    //     message: "Please select your online Session",
-    //     placement: "bottomRight",
-    //   });
-    //   return;
-    // }
-    // if (!faceToFace) {
-    //   notification.error({
-    //     message: "Please select your face To Face Session",
-    //     placement: "bottomRight",
-    //   });
-    //   return;
-    // }
-    // if (!selectedLogos.length) {
-    //   notification.error({
-    //     message: "Please select your specialisms.",
-    //     placement: "bottomRight",
-    //   });
-    //   return;
-    // }
-    // if (!consultation) {
-    //   notification.error({
-    //     message: "Please select consultation type.",
-    //     placement: "bottomRight",
-    //   });
-    //   return;
-    // }
+    // check empty fields
+    if (
+      !data.register.userInfo.email ||
+      !data.register.userInfo.password ||
+      !data.register.trainerData.firstName ||
+      !data.register.trainerData.lastName ||
+      !data.register.trainerData.dob ||
+      !data.register.trainerData.contactNo ||
+      !data.register.trainerData.country ||
+      !data.register.trainerData.zipCode
+    ) {
+      console.log("morfitter if ");
+      notification.error({
+        message: "Please fill in all the required fields.",
+        placement: "bottomRight",
+      });
+      return;
+    }
 
     const formData = new FormData();
     formData.append("data", JSON.stringify(data));
@@ -148,6 +138,7 @@ const PTRegister2 = () => {
         }, 500);
       })
       .catch((error) => {
+        console.log("error ", error);
         notification.error({
           message: error?.data?.message || 'Unexpected error',
           description: 'Please try again later',
@@ -239,11 +230,18 @@ const PTRegister2 = () => {
             <div className="grid md:grid-cols-2 md:gap-4">
               <Form.Item
                 name="country"
-              // rules={[
-              //   { required: true, message: "Please input your country!" },
-              // ]}
+                rules={[
+                  { required: true, message: "Please input your country!" },
+                ]}
               >
-                <Select defaultValue="United Kingdom" placeholder="Country" suffixIcon={<IoMdArrowDropdown className="w-6 h-6 text-greenColor" />} className="w-full">
+                <Select
+                  defaultValue="United Kingdom"
+                  placeholder="Country"
+                  suffixIcon={
+                    <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
+                  }
+                  className="w-full"
+                >
                   {countries.map((country) => (
                     <Select.Option key={country} value={country}>
                       {country}
@@ -254,9 +252,9 @@ const PTRegister2 = () => {
 
               <Form.Item
                 name="postcode"
-              // rules={[
-              //   { required: true, message: "Please input your zip code!" },
-              // ]}
+                rules={[
+                  { required: true, message: "Please input your zip code!" },
+                ]}
               >
                 <Input placeholder="Postcode or Zip code" className="w-full" />
               </Form.Item>
@@ -265,9 +263,9 @@ const PTRegister2 = () => {
             <div>
               <Form.Item
                 name="aboutMe"
-              // rules={[
-              //   { required: true, message: "Please select your surname!" },
-              // ]}
+                rules={[
+                  { required: true, message: "Please select your surname!" },
+                ]}
               >
                 <TextArea placeholder="About me"></TextArea>
               </Form.Item>
@@ -279,16 +277,18 @@ const PTRegister2 = () => {
                 <button
                   type="button"
                   onClick={() => setOnlineSession("yes")}
-                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${onlineSession === "yes" ? "bg-greenColor" : "bg-secondary"
-                    }`}
+                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${
+                    onlineSession === "yes" ? "bg-greenColor" : "bg-secondary"
+                  }`}
                 >
                   Yes
                 </button>
                 <button
                   type="button"
                   onClick={() => setOnlineSession("no")}
-                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${onlineSession === "no" ? "bg-greenColor" : "bg-secondary"
-                    }`}
+                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${
+                    onlineSession === "no" ? "bg-greenColor" : "bg-secondary"
+                  }`}
                 >
                   No
                 </button>
@@ -303,16 +303,18 @@ const PTRegister2 = () => {
                 <button
                   type="button"
                   onClick={() => setFaceToFace("yes")}
-                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${faceToFace === "yes" ? "bg-greenColor" : "bg-secondary"
-                    }`}
+                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${
+                    faceToFace === "yes" ? "bg-greenColor" : "bg-secondary"
+                  }`}
                 >
                   Yes
                 </button>
                 <button
                   type="button"
                   onClick={() => setFaceToFace("no")}
-                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${faceToFace === "no" ? "bg-greenColor" : "bg-secondary"
-                    }`}
+                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${
+                    faceToFace === "no" ? "bg-greenColor" : "bg-secondary"
+                  }`}
                 >
                   No
                 </button>
@@ -324,24 +326,27 @@ const PTRegister2 = () => {
                 <button
                   type="button"
                   onClick={() => setConsultation("free")}
-                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${consultation === "free" ? "bg-greenColor" : "bg-secondary"
-                    }`}
+                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${
+                    consultation === "free" ? "bg-greenColor" : "bg-secondary"
+                  }`}
                 >
                   Free
                 </button>
                 <button
                   type="button"
                   onClick={() => setConsultation("paid")}
-                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${consultation === "paid" ? "bg-greenColor" : "bg-secondary"
-                    }`}
+                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${
+                    consultation === "paid" ? "bg-greenColor" : "bg-secondary"
+                  }`}
                 >
                   Paid
                 </button>
                 <button
                   type="button"
                   onClick={() => setConsultation("both")}
-                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${consultation === "paid" ? "bg-greenColor" : "bg-secondary"
-                    }`}
+                  className={` text-white rounded-full px-0 w-[75px] py-[6px] hover:bg-greenColor font-semibold text-lg ${
+                    consultation === "both" ? "bg-greenColor" : "bg-secondary"
+                  }`}
                 >
                   Both
                 </button>
@@ -362,49 +367,43 @@ const PTRegister2 = () => {
                   },
                 }}
               >
-                {
-                  faceToFace === "yes" && (
-                    <Form.Item
-                      name="radius"
-                      className=" md:w-1/2"
+                {faceToFace === "yes" && (
+                  <Form.Item
+                    name="radius"
+                    className=" md:w-1/2"
                     // rules={[
                     //   { required: true, message: "Please select your surname!" },
                     // ]}
+                  >
+                    <Select
+                      placeholder={
+                        <p className=" text-lg">
+                          Radius
+                          <span className=" text-sm">
+                            (If yes face to face sessions)
+                          </span>
+                        </p>
+                      }
                     >
-
-                      <Select
-                        placeholder={
-                          <p className=" text-lg">
-                            Radius
-                            <span className=" text-sm">
-                              (If yes face to face sessions)
-                            </span>
-                          </p>
-                        }
-                      >
-                        <Select.Option value="1m">1m</Select.Option>
-                        <Select.Option value="2m">2m</Select.Option>
-                        <Select.Option value="3m">3m</Select.Option>
-                        <Select.Option value="4m">4m</Select.Option>
-                        <Select.Option value="5m">5m</Select.Option>
-                        <Select.Option value="6m">6m</Select.Option>
-                        <Select.Option value="7m">7m</Select.Option>
-                        <Select.Option value="10m">10m</Select.Option>
-                        <Select.Option value="11m">11m</Select.Option>
-                        <Select.Option value="12m">12m</Select.Option>
-                        <Select.Option value="13m">13m</Select.Option>
-                        <Select.Option value="14m">14m</Select.Option>
-                        <Select.Option value="15m">15m</Select.Option>
-                        <Select.Option value="15m+">15m+</Select.Option>
-                      </Select>
-
-
-                    </Form.Item>
-                  )
-                }
+                      <Select.Option value="1m">1m</Select.Option>
+                      <Select.Option value="2m">2m</Select.Option>
+                      <Select.Option value="3m">3m</Select.Option>
+                      <Select.Option value="4m">4m</Select.Option>
+                      <Select.Option value="5m">5m</Select.Option>
+                      <Select.Option value="6m">6m</Select.Option>
+                      <Select.Option value="7m">7m</Select.Option>
+                      <Select.Option value="10m">10m</Select.Option>
+                      <Select.Option value="11m">11m</Select.Option>
+                      <Select.Option value="12m">12m</Select.Option>
+                      <Select.Option value="13m">13m</Select.Option>
+                      <Select.Option value="14m">14m</Select.Option>
+                      <Select.Option value="15m">15m</Select.Option>
+                      <Select.Option value="15m+">15m+</Select.Option>
+                    </Select>
+                  </Form.Item>
+                )}
               </ConfigProvider>
             </div>
-
 
             <div className=" mb-10 mt-5 md:-mt-20">
               <p className=" text-lg">specialism</p>
@@ -414,10 +413,11 @@ const PTRegister2 = () => {
                     <div
                       key={index}
                       onClick={() => handleLogoClick(logo?.name)}
-                      className={`flex items-center justify-center w-[110px] lg:w-[110px] h-[110px] lg:h-[110px] px-7 text-center cursor-pointer ${selectedLogos?.includes(logo?.name)
-                        ? "border-4 border-greenColor shadow shadow-greenColor"
-                        : "border-2 border-solid border-transparent"
-                        } rounded transition-all duration-300`}
+                      className={`flex items-center justify-center w-[110px] lg:w-[110px] h-[110px] lg:h-[110px] px-7 text-center cursor-pointer ${
+                        selectedLogos?.includes(logo?.name)
+                          ? "border-4 border-greenColor shadow shadow-greenColor"
+                          : "border-2 border-solid border-transparent"
+                      } rounded transition-all duration-300`}
                       style={{
                         borderWidth: "2px",
                         borderStyle: "solid",
@@ -437,6 +437,8 @@ const PTRegister2 = () => {
                   ))}
                 </div>
               </div>
+              {/* Error message show */}
+              {error && <p className=" text-red-500">{error}</p>}
             </div>
 
             <div className=" flex justify-end items-center gap-2">

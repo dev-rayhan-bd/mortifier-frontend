@@ -1,18 +1,18 @@
 "use client";
-import { Form, Input, Checkbox, Avatar, Upload, InputNumber, message, Select } from "antd";
-import { PhoneOutlined } from "@ant-design/icons";
-import { IoMdArrowDropdown } from "react-icons/io";
-import dynamic from "next/dynamic";
-import regiserImg from "../../../../assets/register.png";
-import circle from "../../../../assets/circle.svg";
-import Image from "next/image";
-import { PiCamera } from "react-icons/pi";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { setInfo, setProfile } from "@/redux/features/auth/registerSlice";
-import { useRouter } from "next/navigation";
+import { PhoneOutlined } from "@ant-design/icons";
+import { Avatar, Checkbox, Form, Input, message, Select, Upload } from "antd";
+import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { IoMdArrowDropdown } from "react-icons/io";
+import { PiCamera } from "react-icons/pi";
+import { useDispatch } from "react-redux";
+import circle from "../../../../assets/circle.svg";
 import addProfilePic from "../../../../assets/profile/add-profile-pic.svg";
+import regiserImg from "../../../../assets/register.png";
 
 const UserRegister = () => {
   const [profilePic, setProfilePic] = useState(null);
@@ -23,7 +23,9 @@ const UserRegister = () => {
   const handleProfilePicUpload = (e) => {
     setProfilePic(e.file.originFileObj);
   };
-  const profilePicUrl = profilePic ? URL.createObjectURL(profilePic) : addProfilePic?.src;
+  const profilePicUrl = profilePic
+    ? URL.createObjectURL(profilePic)
+    : addProfilePic?.src;
 
   const onFinish = async (values) => {
     const { day, month, year } = values;
@@ -52,18 +54,17 @@ const UserRegister = () => {
       country: values.country,
       city: values.city,
     };
-    dispatch(setInfo(registrationData))
+    dispatch(setInfo(registrationData));
     console.log("Registration Data:", registrationData);
 
     // Validate profilePic
     if (profilePic) {
-      dispatch(setProfile(profilePic))
+      dispatch(setProfile(profilePic));
     }
 
     if (registrationData) {
-      router.push('/auth/user-register/user-register-2')
+      router.push("/auth/user-register/user-register-2");
     }
-
   };
 
   const countries = [
@@ -116,7 +117,7 @@ const UserRegister = () => {
     "Trinidad and Tobago",
     "Barbados",
     "Singapore",
-    "Hong Kong"
+    "Hong Kong",
   ];
 
   return (
@@ -244,7 +245,7 @@ const UserRegister = () => {
                     suffixIcon={
                       <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
                     }
-                    className="w-full"
+                    className="w-full min-w-max"
                   >
                     {Array.from({ length: 31 }, (_, i) => (
                       <Select.Option key={i + 1} value={i + 1}>
@@ -266,7 +267,7 @@ const UserRegister = () => {
                     suffixIcon={
                       <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
                     }
-                    className="w-full"
+                    className="w-full min-w-max"
                   >
                     {Array.from({ length: 12 }, (_, i) => (
                       <Select.Option key={i + 1} value={i + 1}>
@@ -288,7 +289,7 @@ const UserRegister = () => {
                     suffixIcon={
                       <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
                     }
-                    className="w-full"
+                    className="w-full min-w-max"
                   >
                     {Array.from(
                       { length: new Date().getFullYear() - 1925 + 1 },

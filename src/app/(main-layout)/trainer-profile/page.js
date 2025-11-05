@@ -1,7 +1,7 @@
 "use client";
 import { Avatar, message, Popconfirm, Rate, Tooltip, Upload } from "antd";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaFacebookF, FaFacebookMessenger, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { PiCamera } from "react-icons/pi";
@@ -44,7 +44,6 @@ import logo8 from '../../../assets/logo8.svg';
 import logo9 from '../../../assets/logo9.svg';
 
 const TrainerProfile = () => {
-  const [profilePic, setProfilePic] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user, role } = useSelector((state) => state.auth);
   const [qualificationVisible, setQualificationVisible] = useState(false);
@@ -53,6 +52,16 @@ const TrainerProfile = () => {
   const dispatch = useDispatch();
   const { data } = useGetMeQuery();
   dispatch(setUser(data?.data?.[0]?.trainerDetails?.[0]));
+  const [profilePic, setProfilePic] = useState("");
+
+  console.log("profilePic ", profilePic);
+  console.log("user, role ", user);
+
+  // useEffect(() => {
+  //   if (user?.profileImageUrl) {
+  //     setProfilePic(user?.profileImageUrl);
+  //   }
+  // }, [user?.profileImageUrl]);
 
   const [updateTrainerProfile, { isLoading }] =
     useUpdateTrainerProfileMutation();
@@ -102,7 +111,8 @@ const TrainerProfile = () => {
   };
   const profilePicUrl = profilePic
     ? URL.createObjectURL(profilePic)
-    : `https://api.morfitter.com${user?.profileImageUrl}`;
+    : `${user?.profileImageUrl}`;
+
 
   const [deleteSpecialism] = useDeleteSpecialismMutation();
 

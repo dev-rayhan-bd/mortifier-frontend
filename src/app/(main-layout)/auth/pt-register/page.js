@@ -1,30 +1,34 @@
 "use client";
-import { Form, Input, Checkbox, Avatar, Upload, InputNumber, message, Select } from "antd";
-import { PhoneOutlined } from "@ant-design/icons";
-import { IoMdArrowDropdown } from "react-icons/io";
-import dynamic from "next/dynamic";
-import regiserImg from "../../../../assets/register.png";
-import circle from "../../../../assets/circle.svg";
-import Image from "next/image";
-import { PiCamera } from "react-icons/pi";
-import { useState } from "react";
-import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { useRouter } from "next/navigation";
 import { setInfo, setProfile } from "@/redux/features/auth/registerSlice";
+import { PhoneOutlined } from "@ant-design/icons";
+import { Avatar, Checkbox, Form, Input, message, Select, Upload } from "antd";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { IoMdArrowDropdown } from "react-icons/io";
+import { PiCamera } from "react-icons/pi";
+import { useDispatch } from "react-redux";
+import circle from "../../../../assets/circle.svg";
 import addProfilePic from "../../../../assets/profile/add-profile-pic.svg";
+import regiserImg from "../../../../assets/register.png";
 
 const PTRegister = () => {
   const [profilePic, setProfilePic] = useState(null);
-  const [form] = Form.useForm();
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
   const handleProfilePicUpload = (e) => {
     setProfilePic(e.file.originFileObj);
+    setError("");
   };
-  const profilePicUrl = profilePic ? URL.createObjectURL(profilePic) : addProfilePic?.src;
+  const profilePicUrl = profilePic
+    ? URL.createObjectURL(profilePic)
+    : addProfilePic?.src;
 
   const onFinish = (values) => {
+    setError("");
     const { day, month, year } = values;
     // Validate day, month, and year
     if (!day || !month || !year) {
@@ -46,14 +50,28 @@ const PTRegister = () => {
       userName: values?.userName,
       password: values.password,
     };
-    console.log("Registration Data of user ", TrainerRegistrationData);
-    dispatch(setInfo(TrainerRegistrationData))
 
-    dispatch(setProfile(profilePic))
+    // check empty fields
+    if (
+      !TrainerRegistrationData.title ||
+      !TrainerRegistrationData.email ||
+      !TrainerRegistrationData.firstName ||
+      !TrainerRegistrationData.lastName ||
+      !TrainerRegistrationData.dob ||
+      !TrainerRegistrationData.mobile ||
+      !TrainerRegistrationData.userName ||
+      !TrainerRegistrationData.password ||
+      !profilePic
+    ) {
+      setError("Please fill in all the required fields.");
+      setProfile(null);
+      return;
+    }
 
-    router.push('/auth/pt-register/pt-register-2')
-
-
+    dispatch(setInfo(TrainerRegistrationData));
+    dispatch(setProfile(profilePic));
+    setError("");
+    router.push("/auth/pt-register/pt-register-2");
   };
 
   return (
@@ -86,9 +104,9 @@ const PTRegister = () => {
             <div className="flex flex-col-reverse md:flex-row justify-between items-center space-x-4 md:mb-5">
               <Form.Item
                 name="title"
-                // rules={[
-                //   { required: true, message: "Please select your title!" },
-                // ]}
+                rules={[
+                  { required: true, message: "Please select your title!" },
+                ]}
                 className="w-[150px]"
               >
                 <Select
@@ -106,10 +124,14 @@ const PTRegister = () => {
                 </Select>
               </Form.Item>
 
-              <div className="relative mb-8 md:-mt-6">
+              <div
+                className={`relative mb-8 md:-mt-6 border-[4px] border-transparent rounded-full ${
+                 error && !profilePic && "border-red-500 "
+                }`}
+              >
                 <Image
                   src={circle}
-                  className=" absolute  w-[300px]"
+                  className="absolute w-[300px]"
                   alt="circle"
                   height={0}
                   width={0}
@@ -186,7 +208,7 @@ const PTRegister = () => {
                     suffixIcon={
                       <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
                     }
-                    className="w-full"
+                    className="w-full min-w-max"
                   >
                     {Array.from({ length: 31 }, (_, i) => (
                       <Select.Option key={i + 1} value={i + 1}>
@@ -208,7 +230,7 @@ const PTRegister = () => {
                     suffixIcon={
                       <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
                     }
-                    className="w-full"
+                    className="w-full min-w-max"
                   >
                     {Array.from({ length: 12 }, (_, i) => (
                       <Select.Option key={i + 1} value={i + 1}>
@@ -230,7 +252,7 @@ const PTRegister = () => {
                     suffixIcon={
                       <IoMdArrowDropdown className="w-6 h-6 text-greenColor" />
                     }
-                    className="w-full"
+                    className="w-full min-w-max"
                   >
                     {Array.from(
                       { length: new Date().getFullYear() - 1925 + 1 },
@@ -289,6 +311,9 @@ const PTRegister = () => {
                 Privacy
               </Checkbox>
             </Form.Item>
+
+            {/* error */}
+            {error && <p className="text-red-500">{error}</p>}
 
             {/* Submit Button */}
             <Form.Item>
