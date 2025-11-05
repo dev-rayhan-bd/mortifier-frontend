@@ -68,7 +68,7 @@ const MySingleContent = ({ content }) => {
             <div className="rounded-2xl w-full overflow-hidden">
               {content?.imageUrl && (
                 <Image
-                  src={`https://api.morfitter.com${content?.imageUrl}`}
+                  src={`${content?.imageUrl}`}
                   alt="Post Content"
                   width={500}
                   height={500}
@@ -82,7 +82,7 @@ const MySingleContent = ({ content }) => {
                   className="w-full rounded-lg transition-transform duration-300 hover:scale-105"
                 >
                   <source
-                    src={`https://api.morfitter.com${content?.videoUrl}`}
+                    src={`${content?.videoUrl}`}
                     type="video/mp4"
                   />
                   Your browser does not support the video tag.

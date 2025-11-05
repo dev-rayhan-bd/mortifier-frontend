@@ -27,7 +27,7 @@ const MyEnrolledSession = () => {
                   <Image
 
                     className="w-full h-[55%] object-cover rounded-t-md"
-                    src={`https://api.morfitter.com${item?.sessionDetails?.promo_image}`}
+                    src={`${item?.sessionDetails?.promo_image}`}
                     alt="session"
                     width={500}
                     height={500}
@@ -38,7 +38,7 @@ const MyEnrolledSession = () => {
                         size={50}
                         src={
                           item?.owner?.profileImageUrl
-                            ? `https://api.morfitter.com${item?.owner?.profileImageUrl}`
+                            ? `${item?.owner?.profileImageUrl}`
                             : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                         }
                       />

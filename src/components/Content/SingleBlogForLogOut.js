@@ -48,7 +48,7 @@ const SingleBlogForLogOut = ({ content }) => {
               <Image
                 src={
                   content?.userInfo?.profileImageUrl
-                    ? `https://api.morfitter.com${content?.userInfo?.profileImageUrl}`
+                    ? `${content?.userInfo?.profileImageUrl}`
                     : profileImage
                 }
                 width={200}
@@ -87,7 +87,7 @@ const SingleBlogForLogOut = ({ content }) => {
             <div className="rounded-2xl w-full overflow-hidden">
               {content?.imageUrl && (
                 <Image
-                  src={`https://api.morfitter.com${content?.imageUrl}`}
+                  src={`${content?.imageUrl}`}
                   alt="Post Content"
                   width={500}
                   height={500}
@@ -98,7 +98,7 @@ const SingleBlogForLogOut = ({ content }) => {
               {content?.videoUrl && (
                 <video controls className="w-full rounded-lg ">
                   <source
-                    src={`https://api.morfitter.com${content?.videoUrl}`}
+                    src={`${content?.videoUrl}`}
                     type="video/mp4"
                   />
                   Your browser does not support the video tag.

@@ -17,7 +17,7 @@ const NewUsers = () => {
         userInfo?.profileImageUrl ? (
           <Avatar
             size={40}
-            src={`https://api.morfitter.com${userInfo?.profileImageUrl}`}
+            src={`${userInfo?.profileImageUrl}`}
           />
         ) : (
           <Avatar size={40} src="https://avatar.iran.liara.run/public/43" />

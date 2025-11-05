@@ -10,8 +10,6 @@ import profileImage from "../../../../../assets/profile/profile_image.webp";
 import { CiEdit } from "react-icons/ci";
 import EditSessionModal from "@/components/TrainerProfile/EditSessionModal";
 
-const BASE_URL = "https://api.morfitter.com";
-
 const SingleSession = () => {
     const { id } = useParams();
 
@@ -77,7 +75,7 @@ const SingleSession = () => {
                     {session?.promo_video && (
                         <div className="w-full md:w-[60%]">
                             <h2 className="text-xl font-semibold mb-3">Promo Video</h2>
-                            <video controls className="w-full h-[400px] object-cover rounded-lg shadow-md" src={`${BASE_URL}${session.promo_video}`}>
+                            <video controls className="w-full h-[400px] object-cover rounded-lg shadow-md" src={`${session.promo_video}`}>
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -87,7 +85,7 @@ const SingleSession = () => {
                         <div className="w-full md:w-[40%]">
                             <h2 className="text-xl font-semibold mb-3">Promo Image</h2>
                             <Image
-                                src={`${BASE_URL}${session.promo_image}`}
+                                src={`${session.promo_image}`}
                                 width={500}
                                 height={300}
                                 alt="Promo Image"
@@ -141,7 +139,7 @@ const SingleSession = () => {
                                     </div>
 
 
-                                    <video controls className="w-full mt-3 rounded-lg" src={`${BASE_URL}${content.url}`}>
+                                    <video controls className="w-full mt-3 rounded-lg" src={`${content.url}`}>
                                         Your browser does not support the video tag.
                                     </video>
                                 </div>
@@ -164,7 +162,7 @@ const SingleSession = () => {
                                 <div className="flex items-center space-x-4">
                                     <Image
                                         src={user?.additionalInfo?.profileImageUrl
-                                            ? `https://api.morfitter.com${user?.additionalInfo?.profileImageUrl}`
+                                            ? `${user?.additionalInfo?.profileImageUrl}`
                                             : profileImage}
                                         alt="Profile"
                                         width={300}

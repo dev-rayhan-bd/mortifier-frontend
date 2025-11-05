@@ -97,7 +97,7 @@ const SessionsPage = () => {
                         <Image
 
                           className="w-full h-[55%] object-cover rounded-t-md"
-                          src={`https://api.morfitter.com${item?.promo_image}`}
+                          src={`${item?.promo_image}`}
                           alt="session"
                           width={500}
                           height={500}
@@ -108,7 +108,7 @@ const SessionsPage = () => {
                               size={50}
                               src={
                                 item?.owner?.[0]?.profileImageUrl
-                                  ? `https://api.morfitter.com${item?.owner?.[0]?.profileImageUrl}`
+                                  ? `${item?.owner?.[0]?.profileImageUrl}`
                                   : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                               }
                             />

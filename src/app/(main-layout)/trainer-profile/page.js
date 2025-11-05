@@ -492,7 +492,7 @@ const TrainerProfile = () => {
                             className="w-16 h-16 object-cover rounded-full border-2 border-gray-300"
                             src={
                               item?.traineeData?.profileImageUrl
-                                ? `https://api.morfitter.com${item?.traineeData?.profileImageUrl}`
+                                ? `${item?.traineeData?.profileImageUrl}`
                                 : defaultProfilePic
                             }
                             height={200}
@@ -594,7 +594,7 @@ const TrainerProfile = () => {
                   <div>
                     <Image
                       alt="session"
-                      src={`https://api.morfitter.com${item?.promo_image}`}
+                      src={`${item?.promo_image}`}
                       height={500}
                       width={500}
                       className=" h-[380px] object-cover"

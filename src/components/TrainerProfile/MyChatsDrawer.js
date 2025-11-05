@@ -44,7 +44,7 @@ const MyChatsDrawer = ({ onClose, open }) => {
                             className="cursor-pointer bg-slate-100 mb-3 p-3 rounded-md hover:bg-slate-200 w-full flex justify-between items-center"
                         >
                             <div className="flex gap-2 w-full">
-                                <Avatar size={40} src={`https://api.morfitter.com${user?.profileImageUrl}`} />
+                                <Avatar size={40} src={`${user?.profileImageUrl}`} />
                                 <div className="flex-1">
                                     <p className="font-bold capitalize">{user?.firstName} {user?.lastName}</p>
                                     <p className="-mb-0">{user?.lastMessage}</p>

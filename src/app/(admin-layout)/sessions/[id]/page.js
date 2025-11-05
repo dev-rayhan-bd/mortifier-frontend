@@ -105,7 +105,7 @@ const SingleSession = () => {
                         <div className="flex items-center space-x-4">
                             <Image
                                 src={user?.additionalInfo?.profileImageUrl
-                                    ? `https://api.morfitter.com${user?.additionalInfo?.profileImageUrl}`
+                                    ? `${user?.additionalInfo?.profileImageUrl}`
                                     : profileImage}
                                 alt="Profile"
                                 width={300}

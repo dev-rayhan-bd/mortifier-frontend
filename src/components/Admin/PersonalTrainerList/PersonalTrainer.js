@@ -35,7 +35,7 @@ const PersonalTrainersTable = ({ searchQuery }) => {
         record?.profileImageUrl ? (
           <Avatar
             size={40}
-            src={`https://api.morfitter.com${record?.profileImageUrl}`}
+            src={`${record?.profileImageUrl}`}
           />
         ) : (
           <Avatar size={40} src="https://avatar.iran.liara.run/public/43" />

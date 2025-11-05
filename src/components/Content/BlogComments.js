@@ -59,22 +59,11 @@ const BlogComments = ({ id }) => {
               <Avatar
                 src={
                   item?.user_image
-                    ? `https://api.morfitter.com${item?.user_image}`
+                    ? `${item?.user_image}`
                     : defaultProfilePic
                 }
                 size={45}
               />
-              {/* <Image
-                className="rounded-full border border-gray-300"
-                src={
-                  item?.user_image
-                    ? `https://api.morfitter.com${item?.user_image}`
-                    : defaultProfilePic
-                }
-                height={50}
-                width={50}
-                alt="profile"
-              /> */}
               <div>
                 <p className="text-lg font-semibold text-gray-900 capitalize">
                   {item?.user_name}

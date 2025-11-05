@@ -96,8 +96,7 @@ const Profile = () => {
         message.error(error?.data?.message);
       });
   };
-  // const profilePicture = user?.profilePicture ? `${user?.profileImageUrl}` : follower1;
-  // const profilePicUrl = profilePic ? URL.createObjectURL(profilePic) : profilePicture;
+  
   const text = (
     <div className=" flex gap-3 py-1">
       <Link
@@ -115,9 +114,9 @@ const Profile = () => {
     </div>
   );
 
-  const profilePicUrl = profilePic
-    ? URL.createObjectURL(profilePic)
-    : `https://api.morfitter.com${user?.profileImageUrl}`;
+ const profilePicUrl = profilePic
+   ? URL.createObjectURL(profilePic)
+   : `${user?.profileImageUrl}`;
 
   // chats
   const [open, setOpen] = useState(false);
@@ -345,7 +344,7 @@ const Profile = () => {
                       className=" w-14 h-14 rounded-2xl object-cover "
                       src={
                         item?.followingDetails?.profileImageUrl
-                          ? `https://api.morfitter.com${item?.followingDetails?.profileImageUrl}`
+                          ? `${item?.followingDetails?.profileImageUrl}`
                           : defaultProfilePic
                       }
                       height={200}

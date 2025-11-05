@@ -1,5 +1,6 @@
 import { Input, Modal } from 'antd';
-import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, FacebookIcon, TwitterIcon, LinkedinIcon } from 'react-share';
+import { ImInstagram } from 'react-icons/im';
+import { FacebookShareButton, TwitterShareButton, LinkedinShareButton, FacebookIcon, TwitterIcon, LinkedinIcon, WhatsappIcon } from 'react-share';
 
 const ShareModal = ({ isModalOpen, handleOk, handleCancel, shareUrl }) => {
 
@@ -14,6 +15,9 @@ const ShareModal = ({ isModalOpen, handleOk, handleCancel, shareUrl }) => {
                 </TwitterShareButton>
                 <LinkedinShareButton url={shareUrl}>
                     <LinkedinIcon size={50} round />
+                </LinkedinShareButton>
+                <LinkedinShareButton url={shareUrl}>
+                    <WhatsappIcon size={50} round />
                 </LinkedinShareButton>
             </div>
             <div className=' mt-6'>

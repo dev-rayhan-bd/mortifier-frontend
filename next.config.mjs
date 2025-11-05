@@ -7,10 +7,9 @@ const nextConfig = {
       "res.cloudinary.com",
       "i.pravatar.cc",
       "api.morfitter.com",
+      "api.morfitter.comhttps",
     ], // Add the domains you need
   },
-
-
 };
 
 export default nextConfig;
