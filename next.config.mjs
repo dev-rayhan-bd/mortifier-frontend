@@ -8,6 +8,7 @@ const nextConfig = {
       "i.pravatar.cc",
       "api.morfitter.com",
       "api.morfitter.comhttps",
+      "avatar.iran.liara.run",
     ], // Add the domains you need
   },
 };
