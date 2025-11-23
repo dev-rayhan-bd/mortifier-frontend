@@ -39,7 +39,7 @@ const MobileNavbar = ({ onClose, open }) => {
           </div>
 
           <div className=" w-full h-full flex flex-col pl-6 justify-center gap-8">
-            <Link onClick={onClose} href="/">
+            {/* <Link onClick={onClose} href="/">
               <span
                 className={`${
                   isActive("/") ? " rounded-full  bg-primary  text-white" : ""
@@ -47,7 +47,7 @@ const MobileNavbar = ({ onClose, open }) => {
               >
                 Home
               </span>
-            </Link>
+            </Link> */}
 
             <Link onClick={onClose} href="/content">
               <span

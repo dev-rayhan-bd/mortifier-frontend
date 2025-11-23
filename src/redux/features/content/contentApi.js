@@ -8,7 +8,7 @@ const contentApi = baseApi.injectEndpoints({
         method: "GET",
         params,
       }),
-      providesTags: ['content']
+      providesTags: ["content"],
     }),
 
     getSingleContent: builder.query({
@@ -16,7 +16,7 @@ const contentApi = baseApi.injectEndpoints({
         url: `/content/${id}`,
         method: "GET",
       }),
-      providesTags: ['content']
+      providesTags: ["content"],
     }),
 
     getAllContentsForUser: builder.query({
@@ -25,7 +25,7 @@ const contentApi = baseApi.injectEndpoints({
         method: "GET",
         params,
       }),
-      providesTags: ['content']
+      providesTags: ["content"],
     }),
 
     createContent: builder.mutation({
@@ -34,34 +34,33 @@ const contentApi = baseApi.injectEndpoints({
         method: "POST",
         body: formData,
       }),
-      invalidatesTags: ['content']
+      invalidatesTags: ["content"],
     }),
 
     updateContent: builder.mutation({
-      query: ({id,formData}) => ({
+      query: ({ id, formData }) => ({
         url: `/content/${id}`,
         method: "PATCH",
         body: formData,
       }),
-      invalidatesTags: ['content']
+      invalidatesTags: ["content"],
     }),
 
     getMyContent: builder.query({
       query: (params) => ({
         url: "/content/my-content",
         method: "GET",
-        params
+        params,
       }),
-      providesTags: ['content']
+      providesTags: ["content"],
     }),
-
 
     deleteContent: builder.mutation({
       query: (id) => ({
         url: `/content/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ['content']
+      invalidatesTags: ["content"],
     }),
 
     likeAndDislike: builder.mutation({
@@ -70,7 +69,7 @@ const contentApi = baseApi.injectEndpoints({
         method: "PATCH",
         body: data,
       }),
-      invalidatesTags: ['content']
+      invalidatesTags: ["content"],
     }),
 
     doComment: builder.mutation({
@@ -79,7 +78,7 @@ const contentApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ['comments']
+      invalidatesTags: ["comments"],
     }),
 
     getAllComments: builder.query({
@@ -87,12 +86,22 @@ const contentApi = baseApi.injectEndpoints({
         url: `/comment/${id}`,
         method: "GET",
       }),
-      providesTags: ['comments']
+      providesTags: ["comments"],
     }),
-
   }),
 });
 
-export const { useGetAllContentsQuery, useUpdateContentMutation ,useGetSingleContentQuery , useGetAllContentsForUserQuery , useCreateContentMutation, useGetMyContentQuery, useDeleteContentMutation, useLikeAndDislikeMutation, useDoCommentMutation, useGetAllCommentsQuery } = contentApi;
+export const {
+  useGetAllContentsQuery,
+  useUpdateContentMutation,
+  useGetSingleContentQuery,
+  useGetAllContentsForUserQuery,
+  useCreateContentMutation,
+  useGetMyContentQuery,
+  useDeleteContentMutation,
+  useLikeAndDislikeMutation,
+  useDoCommentMutation,
+  useGetAllCommentsQuery,
+} = contentApi;
 
 export default contentApi;

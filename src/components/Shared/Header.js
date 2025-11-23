@@ -46,7 +46,7 @@ const Header = () => {
         {/* Desktop Menu */}
         <div className="hidden xl:flex space-x-5 items-center">
           <ul className="flex items-center space-x-5">
-            <Link href="/">
+            {/* <Link href="/">
               <span
                 className={`${
                   isActive("/") ? " rounded-full  bg-primary  text-white" : ""
@@ -54,7 +54,7 @@ const Header = () => {
               >
                 Home
               </span>
-            </Link>
+            </Link> */}
             <Link href="/content">
               <span
                 className={`${
