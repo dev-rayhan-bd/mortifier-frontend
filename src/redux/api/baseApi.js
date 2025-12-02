@@ -6,7 +6,7 @@ import { logout, setRole, setToken } from "../features/auth/authSlice"; // ✅ E
 
 // API Base URL
 // const BASE_URL = `https://api.morfitter.com/api/v1`;
-const BASE_URL = `http://localhost:5000/api/v1`;
+const BASE_URL = `http://10.10.20.13:5000/api/v1`;
 
 // ✅ Fetch base query with token setup
 const baseQuery = fetchBaseQuery({

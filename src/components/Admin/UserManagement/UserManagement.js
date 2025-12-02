@@ -1,10 +1,12 @@
 "use client";
 import {
+  useDeleteUserMutation,
   useGetallUserManagementQuery,
   useUpdateUserMutation,
 } from "@/redux/features/admin/userManagement/userManagementApi";
 import {
   Avatar,
+  Button,
   message,
   Modal,
   Pagination,
@@ -15,16 +17,43 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 import defaultImage from "../../../assets/profile/default-image.png";
+import { MdDelete } from "react-icons/md";
 
 const AllUsers = ({ searchQuery }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const { data: getallUserManagementData, isLoading } =
+  const { data: getallUserManagementData, isLoading,refetch } =
     useGetallUserManagementQuery({
       page: currentPage,
       searchTerm: searchQuery,
     });
   const [updateUser] = useUpdateUserMutation();
+  const [deleteUser] = useDeleteUserMutation();
 
+   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
+console.log("user to delete------>",userToDelete);
+  const handleDeleteUser = (userId) => {
+    setUserToDelete(userId);
+    setIsDeleteModalVisible(true);
+  };
+
+  const confirmDelete = () => {
+    console.log("inside confirm delete");
+    if (userToDelete) {
+      const id = userToDelete
+      deleteUser(id)
+        .unwrap()
+        .then(() => {
+          message.success("User Deleted Successfully");
+          setIsDeleteModalVisible(false);
+        refetch()
+        })
+        .catch((error) => {
+          message.error(error?.data?.message || "Failed to delete user");
+                setIsDeleteModalVisible(false);
+        });
+    }
+  };
 
   const confirm = (id) => {
     updateUser(id)
@@ -120,6 +149,15 @@ const AllUsers = ({ searchQuery }) => {
         </>
       ),
     },
+    {
+      title: "Delete",
+      key: "action",
+      render: (_, record) => (
+        <>
+          <MdDelete  size={24} className="text-red-500"     onClick={() => handleDeleteUser(record?._id)}/>
+        </>
+      ),
+    },
   ];
 
   if (isLoading) {
@@ -151,6 +189,30 @@ const AllUsers = ({ searchQuery }) => {
           />
         )}
       </div>
+<Modal
+  title="Confirm Delete"
+  visible={isDeleteModalVisible}
+  onCancel={() => setIsDeleteModalVisible(false)} // Close the modal on Cancel
+  footer={[
+    <Button
+      key="cancel"
+      onClick={() => setIsDeleteModalVisible(false)} // Close the modal on Cancel
+    >
+      Cancel
+    </Button>,
+    <Button
+      key="confirm"
+      type="primary" // "primary" type for the "Yes" button
+      danger // "danger" type for a delete confirmation button
+      onClick={()=>confirmDelete()}
+    >
+      Yes
+    </Button>,
+  ]}
+>
+  <p>Are you sure you want to delete this user?</p>
+</Modal>
+
     </div>
   );
 };
